@@ -1,0 +1,7 @@
+.rightmrgn{ 
+	margin-right: 263px;margin-top: 20px;
+	box-shadow: 5px 10px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ }
+ .style {
+ 	cursor: progress;
+ }
