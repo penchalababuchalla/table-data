@@ -1,88 +1,50 @@
-	<div class="row">
+<div class="row">
+	<div class="col-3">
 		<input type="text" name="name" [(ngModel)]="name" placeholder="Name....">
-		<input type="email" name="email" [(ngModel)]="email"  placeholder="Email...">
-		<input type="text" name="phoneNo" [(ngModel)]="phoneNo" placeholder="PhoneNo....">
+	</div>
+	<div class="col-3">
+		<input type="email" name="email" [(ngModel)]="email" placeholder="Email..."><br>
+		<p [hidden]="isHide">(please fill the valid "Email")</p>
+	</div>
+	<div class="col-3">
+		<input type="text" name="phoneNo" [(ngModel)]="phoneNo" placeholder="PhoneNo...."><br>
+		<p [hidden]="isHide">(please fill the valid "Phone Number")</p>
+	</div>
+	<div class="col-3">
 		<button (click)="addData()" class="style">submit</button><br>
 	</div>
-	<div class="row">
-		<table class="table table-bordered rightmrgn">
-			<thead>
-				<tr>
-					<th>name</th>
-					<th>email</th>
-					<th>phoneNo</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor="let user of users">
-					<td>
-						<input type="text" name="name" [(ngModel)]="user.name" *ngIf="user.editMode">
-						<span *ngIf="!user.editMode">{{user.name}}</span>
-						
-					</td>
-					<td>
-						<input type="text" name="email" [(ngModel)]="user.email" *ngIf="user.editMode">
-						<span *ngIf="!user.editMode">{{user.email}}</span>
-					</td>
-					<td>
-						<input type="text" name="phoneNo" [(ngModel)]="user.phoneNo" *ngIf="user.editMode">
-						<span *ngIf="!user.editMode">{{user.phoneNo}}</span>
-					</td>
-					<td>
-						<button (click)="editData(user)" *ngIf="!user.editMode">edit</button>
-						<button (click)="saveData(user)" *ngIf="user.editMode">save</button>
-						<button (click)="deleteData(user)">delete</button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<!-- <div class="row">
-		<div class="col-7"></div>
-		<div class="col-5">
-			<div class="row">
-				<div>
-					<button (click)="show()">C</button>
+</div>
+<div class="row">
+	<table class="table table-bordered rightmrgn">
+		<thead>
+			<tr>
+				<th>name</th>
+				<th>email</th>
+				<th>phoneNo</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let user of users">
+				<td>
+					<input type="text" name="name" [(ngModel)]="user.name" *ngIf="user.editMode">
+					<span *ngIf="!user.editMode">{{user.name}}</span>
 					
-				</div>
-				<div>
-					<button (click)="show()">C</button>
-					
-				</div>
-				<div>
-					<button (click)="show()">C</button>
-					
-				</div>
-			</div>
-			<div class="row">
-				<div>
-					
-					<button (click)="hide()">C</button>
-				</div>
-				<div>
-					
-					<button (click)="hide()">C</button>
-				</div>
-				<div>
-					
-					<button (click)="hide()">C</button>
-				</div>
-			</div>
-			<div class="row">
-				<div>
-					
-					<button (click)="hide()">C</button>
-				</div>
-				<div>
-					
-					<button (click)="hide()">C</button>
-				</div>
-				<div>
-					
-					<button (click)="hide()">C</button>
-				</div>
-			</div>
-		</div>
-	</div>
- -->
+				</td>
+				<td>
+					<input type="text" name="email" [(ngModel)]="user.email" *ngIf="user.editMode">
+					<span *ngIf="!user.editMode">{{user.email}}</span>
+				</td>
+				<td>
+					<input type="text" name="phoneNo" [(ngModel)]="user.phoneNo" *ngIf="user.editMode">
+					<span *ngIf="!user.editMode">{{user.phoneNo}}</span>
+				</td>
+				<td>
+					<button (click)="editData(user)" *ngIf="!user.editMode">edit</button>
+					<button (click)="saveData(user)" *ngIf="user.editMode">save</button>
+					<button (click)="deleteData(user)">delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

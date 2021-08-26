@@ -13,6 +13,7 @@ export class TableDataComponent{
 	name ='';
 	email ='';
 	phoneNo = '';
+	isHide = true;
 
 	users?: User[];
 	constructor(){
@@ -20,6 +21,7 @@ export class TableDataComponent{
 	}
 	addData(){
 		if(this.name==''){
+			this.isHide =false;
 		}
 		else{
 			this.users!.push(
@@ -31,6 +33,7 @@ export class TableDataComponent{
 					editMode: false
 				}
 			);
+			this.isHide =true;
 		}
 		this.name='';
 		this.email='';
