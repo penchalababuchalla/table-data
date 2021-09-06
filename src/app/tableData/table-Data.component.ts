@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User } from './../user'
+import { UserService } from './../users/user.service';
 
 
 @Component({
@@ -14,25 +15,29 @@ export class TableDataComponent{
 	email ='';
 	phoneNo = '';
 	isHide = true;
-
+	abc;
 	users?: User[];
-	constructor(){
-		this.users = []
+
+	constructor(userService: UserService){
+		this.users = userService.getUsers();
+		this.abc = userService;
 	}
+
 	addData(){
+		// this.abc.createUser();
+
 		if(this.name==''){
 			this.isHide =false;
 		}
 		else{
-			this.users!.push(
-				{
+			let u = {
 					id: Math.random(),
 					name: this.name,
 					email: this.email,
 					phoneNo: this.phoneNo.toString(),
 					editMode: false
-				}
-			);
+				};
+			this.abc.createUser(u)
 			this.isHide =true;
 		}
 		this.name='';
@@ -44,12 +49,10 @@ export class TableDataComponent{
 		this.users![index].editMode = true;
 	}
 	saveData(user:User){
-		const index: number = this.users!.indexOf(user);
-		this.users![index].editMode = false;
+		this.abc.updateUser(user)
 	}
 	deleteData(user: User){
-		const index: number = this.users!.indexOf(user);
-		this.users!.splice(index,1);
+		this.abc.deleteUser(user)
 	}
 
 }
